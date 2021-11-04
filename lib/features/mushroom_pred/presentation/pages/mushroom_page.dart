@@ -26,7 +26,44 @@ class _MushroomPageState extends State<MushroomPage> {
           child: BlocBuilder<MushroomBloc, MushroomState>(
             builder: (context, state) {
               if (state is LoadedState) {
-                return Text('Loading was successful, mushroom was: ${state.model.poisonous}');
+                String message;
+                if(state.model.poisonous) {
+                  message = 'Poisonous!';
+                } else {
+                  message = 'Edible!';
+                }
+                return Center(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(24),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          const Text('The mushroom you have entered data for is:'),
+                          Text(message, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
+                            child: Image.asset(
+                              'assets/search.png',
+                              fit: BoxFit.fitWidth,
+                              width: double.infinity,
+                            ),
+                          ),
+                          const SizedBox(height: 20,),
+                          const Text('For more information regarding the prediction, please visit the \'about\' screen')
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               } else if (state is ErrorState) {
                 return Text('Failure: ${state.failure}');
               }
