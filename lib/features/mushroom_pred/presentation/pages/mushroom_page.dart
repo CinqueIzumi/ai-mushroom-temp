@@ -58,7 +58,7 @@ class _MushroomPageState extends State<MushroomPage> {
                             ),
                           ),
                           const SizedBox(height: 20,),
-                          const Text('For more information regarding the prediction, please visit the \'about\' screen')
+                          const Text('The accuracy of the prediction over more than 2000 different test samples was 99.82%.\n\nFor more information regarding the prediction, please visit the \'about\' screen')
                         ],
                       ),
                     ),
