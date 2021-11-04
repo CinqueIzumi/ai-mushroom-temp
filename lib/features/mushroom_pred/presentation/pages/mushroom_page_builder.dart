@@ -1,5 +1,7 @@
+import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/widgets/select_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MushroomPageBuilder extends StatefulWidget {
   const MushroomPageBuilder({Key? key}) : super(key: key);
@@ -95,22 +97,19 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     },
   );
   final SelectCard card6 = SelectCard(
-    maxOptions: 4,
+    maxOptions: 2,
     question: 'Gill attachment',
     answers: const {
       "attached": "a",
-      "descending": "d",
       "free": "f",
-      "notched": "n",
     },
   );
   final SelectCard card7 = SelectCard(
-    maxOptions: 3,
+    maxOptions: 2,
     question: 'Gill spacing',
     answers: const {
       "close": "c",
       "crowded": "w",
-      "distant": "d",
     },
   );
   final SelectCard card8 = SelectCard(
@@ -148,14 +147,12 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     },
   );
   final SelectCard card11 = SelectCard(
-    maxOptions: 7,
+    maxOptions: 5,
     question: 'Stalk root',
     answers: const {
       "bulbous": "b",
       "club": "c",
-      "cup": "u",
       "equal": "e",
-      "rhizomorphs": "z",
       "rooted": "r",
       "missing": "?",
     },
@@ -165,8 +162,8 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     question: 'Stalk surface above ring',
     answers: const {
       "fibrous": "f",
-      "grooves": "g",
       "scaly": "y",
+      "silky": "k",
       "smooth": "s",
     },
   );
@@ -175,8 +172,8 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     question: 'Stalk surface below ring',
     answers: const {
       "fibrous": "f",
-      "grooves": "g",
       "scaly": "y",
+      "silky": "k",
       "smooth": "s",
     },
   );
@@ -237,17 +234,14 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     },
   );
   final SelectCard card19 = SelectCard(
-    maxOptions: 8,
+    maxOptions: 5,
     question: 'Ring type',
     answers: const {
-      "cobwebby": "c",
       "evanescent": "e",
       "flaring": "f",
       "large": "l",
       "none": "n",
       "pendant": "p",
-      "sheathing": "s",
-      "zone": "z",
     },
   );
   final SelectCard card20 = SelectCard(
@@ -317,7 +311,31 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
       card22,
       ElevatedButton(
         onPressed: () async {
-          // BlocProvider.of<MushroomBloc>(context).add(RequestMushroomInfo(json: customJson));
+          Map<String, dynamic> customJson = {};
+          customJson['cap-shape'] = [card1.text];
+          customJson['cap-surface'] = [card2.text];
+          customJson['cap-color'] = [card3.text];
+          customJson['bruises'] = [card4.text];
+          customJson['odor'] = [card5.text];
+          customJson['gill-attachment'] = [card6.text];
+          customJson['gill-spacing'] = [card7.text];
+          customJson['gill-size'] = [card8.text];
+          customJson['gill-color'] = [card9.text];
+          customJson['stalk-shape'] = [card10.text];
+          customJson['stalk-root'] = [card11.text];
+          customJson['stalk-surface-above-ring'] = [card12.text];
+          customJson['stalk-surface-below-ring'] = [card13.text];
+          customJson['stalk-color-above-ring'] = [card14.text];
+          customJson['stalk-color-below-ring'] = [card15.text];
+          customJson['veil-type'] = [card16.text];
+          customJson['veil-color'] = [card17.text];
+          customJson['ring-number'] = [card18.text];
+          customJson['ring-type'] = [card19.text];
+          customJson['spore-print-color'] = [card20.text];
+          customJson['population'] = [card21.text];
+          customJson['habitat'] = [card22.text];
+
+          BlocProvider.of<MushroomBloc>(context).add(RequestMushroomInfo(json: customJson));
         },
         child: const Text('submit'),
       ),
