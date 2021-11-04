@@ -1,5 +1,6 @@
 import 'package:ai_mushroom/core/widgets/menu_items.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/about_page.dart';
+import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/help_page.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/mushroom_page.dart';
 import 'package:drawerbehavior/drawer_scaffold.dart';
 import 'package:drawerbehavior/menu_screen.dart';
@@ -20,8 +21,9 @@ class _DrawerScaleIconState extends State<DrawerScaleIcon> {
   late String title;
 
   List<Widget> pages = [
-    const AboutPage(),
+    const HelpPage(),
     const MushroomPage(),
+    const AboutPage(),
   ];
 
   @override
