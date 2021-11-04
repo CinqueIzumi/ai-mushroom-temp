@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mushroom Prediction',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         scaffoldBackgroundColor: kColorScaffold,
       ),
       home: const Scaffold(

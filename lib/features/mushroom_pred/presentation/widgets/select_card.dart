@@ -1,6 +1,7 @@
 import 'package:ai_mushroom/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SelectCard extends StatefulWidget {
   int _selectedIndex = 0;
 
@@ -38,16 +39,16 @@ class _SelectCardState extends State<SelectCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(1),
+      margin: const EdgeInsets.all(5),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(24),
         ),
-
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -55,30 +56,36 @@ class _SelectCardState extends State<SelectCard> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    _updateBackwards();
-                  },
-                  child: const Icon(Icons.arrow_left_rounded),
-                  style: ElevatedButton.styleFrom(
-                    primary: kColorButton,
-                    shape: const CircleBorder(),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _updateBackwards();
+                    },
+                    child: const Icon(Icons.arrow_left_rounded),
+                    style: ElevatedButton.styleFrom(
+                      primary: kColorButton,
+                      shape: const CircleBorder(),
+                    ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(widget.question, style: const TextStyle(fontWeight: FontWeight.w200),),
-                    Text(widget.answers.keys.elementAt(widget._selectedIndex), style: const TextStyle(fontWeight: FontWeight.bold)),
-                  ],
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(widget.question, style: const TextStyle(fontWeight: FontWeight.w200, fontSize: 11),),
+                      Text(widget.answers.keys.elementAt(widget._selectedIndex), style: const TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    _updateForward();
-                  },
-                  child: const Icon(Icons.arrow_right_rounded),
-                  style: ElevatedButton.styleFrom(
-                    primary: kColorButton,
-                    shape: const CircleBorder(),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _updateForward();
+                    },
+                    child: const Icon(Icons.arrow_right_rounded),
+                    style: ElevatedButton.styleFrom(
+                      primary: kColorButton,
+                      shape: const CircleBorder(),
+                    ),
                   ),
                 ),
               ],
