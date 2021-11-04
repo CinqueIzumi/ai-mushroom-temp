@@ -3,8 +3,13 @@ import 'package:ai_mushroom/features/mushroom_pred/domain/entities/mushroom_info
 class MushroomInfoModel extends MushroomInfo {
   const MushroomInfoModel({required bool poison}) : super(poisonous: poison);
 
-  factory MushroomInfoModel.fromJson(Map<String, dynamic> json) {
-    return MushroomInfoModel(poison: json['poisonous']);
+  factory MushroomInfoModel.fromResponse(String response) {
+    bool poisonous = false;
+
+    if(response == 'This mushroom has been classified as poisonous') {
+      poisonous = true;
+    }
+    return MushroomInfoModel(poison: poisonous);
   }
 
   Map<String, dynamic> toJson() {

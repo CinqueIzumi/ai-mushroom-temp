@@ -20,7 +20,7 @@ void main() {
       final Map<String, dynamic> jsonMap = json.decode(fixture('edible_info_return.json'));
 
       // act
-      final result = MushroomInfoModel.fromJson(jsonMap);
+      final result = MushroomInfoModel.fromResponse(jsonMap);
 
       // assert
       expect(result, tMushroomInfoModel);

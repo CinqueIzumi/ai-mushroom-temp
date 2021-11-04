@@ -40,7 +40,7 @@ void main() {
   }
 
   group('getPrediction', () {
-    final tMushroomInfo = MushroomInfoModel.fromJson(
+    final tMushroomInfo = MushroomInfoModel.fromResponse(
         json.decode(fixture('poisonous_info_return.json')));
 
     test(
