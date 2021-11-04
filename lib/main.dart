@@ -1,3 +1,4 @@
+import 'package:ai_mushroom/core/utils/colors.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/mushroom_page.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,7 @@ void main() async {
   await di.init();
   runApp(
     MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => sl<MushroomBloc>())
-      ],
+      providers: [BlocProvider(create: (context) => sl<MushroomBloc>())],
       child: const MyApp(),
     ),
   );
@@ -26,8 +25,13 @@ class MyApp extends StatelessWidget {
       title: 'Mushroom Prediction',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: kColorScaffold,
       ),
-      home: const MushroomPage(),
+      home: const Scaffold(
+        body: SafeArea(
+          child: MushroomPage(),
+        ),
+      ),
     );
   }
 }
