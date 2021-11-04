@@ -28,6 +28,9 @@ dependencies:
   # Service locator
   get_it: ^7.2.0
 
+  # Drawer menu
+  drawerbehavior: ^2.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
