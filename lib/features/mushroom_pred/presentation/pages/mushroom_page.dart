@@ -1,4 +1,3 @@
-import 'package:ai_mushroom/core/utils/colors.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/mushroom_page_builder.dart';
 import 'package:flutter/material.dart';
