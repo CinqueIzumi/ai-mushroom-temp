@@ -6,14 +6,6 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'About Page',
-            style: TextStyle(color: Colors.black54),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(

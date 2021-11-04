@@ -15,11 +15,6 @@ class _MushroomPageState extends State<MushroomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mushroom Questionnaire', style: TextStyle(color: Colors.black54),),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
