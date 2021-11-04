@@ -1,3 +1,4 @@
+import 'package:ai_mushroom/core/utils/colors.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/widgets/select_card.dart';
 import 'package:flutter/material.dart';
@@ -48,15 +49,13 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
     question: 'Cap shape',
     maxOptions: 6,
   );
-  final SelectCard card2 = SelectCard(
-      maxOptions: 4,
-      question: 'Cap surface',
-      answers: const {
-        "fibrous": "f",
-        "grooves": "g",
-        "scaly": "y",
-        "smooth": "s",
-      });
+  final SelectCard card2 =
+      SelectCard(maxOptions: 4, question: 'Cap surface', answers: const {
+    "fibrous": "f",
+    "grooves": "g",
+    "scaly": "y",
+    "smooth": "s",
+  });
   final SelectCard card3 = SelectCard(
     maxOptions: 10,
     question: 'Cap color',
@@ -210,9 +209,7 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
   final SelectCard card16 = SelectCard(
     maxOptions: 1,
     question: 'Veil type',
-    answers: const {
-      "partial" : "p"
-    },
+    answers: const {"partial": "p"},
   );
   final SelectCard card17 = SelectCard(
     maxOptions: 4,
@@ -309,7 +306,15 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
       card20,
       card21,
       card22,
-      ElevatedButton(
+      const SizedBox(
+        height: 10,
+      ),
+      MaterialButton(
+        minWidth: double.infinity,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12), // <-- Radius
+        ),
+        color: kColorButton,
         onPressed: () async {
           Map<String, dynamic> customJson = {};
           customJson['cap-shape'] = [card1.text];
@@ -335,17 +340,17 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
           customJson['population'] = [card21.text];
           customJson['habitat'] = [card22.text];
 
-          BlocProvider.of<MushroomBloc>(context).add(RequestMushroomInfo(json: customJson));
+          BlocProvider.of<MushroomBloc>(context)
+              .add(RequestMushroomInfo(json: customJson));
         },
-        child: const Text('submit'),
+        child:
+            const Padding(padding: EdgeInsets.all(15), child: Text('Predict!')),
       ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: _buildColumnWidgets()
-    );
+    return Column(children: _buildColumnWidgets());
   }
 }
