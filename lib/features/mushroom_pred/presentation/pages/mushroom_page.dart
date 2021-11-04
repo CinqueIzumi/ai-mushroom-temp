@@ -10,6 +10,32 @@ class MushroomPage extends StatefulWidget {
 }
 
 class _MushroomPageState extends State<MushroomPage> {
+
+  final customJson = {
+    "cap-shape": ["x"],
+    "cap-surface": ["s"],
+    "cap-color": ["n"],
+    "bruises": ["t"],
+    "odor": ["p"],
+    "gill-attachment": ["f"],
+    "gill-spacing": ["c"],
+    "gill-size": ["n"],
+    "gill-color": ["k"],
+    "stalk-shape": ["e"],
+    "stalk-root": ["e"],
+    "stalk-surface-above-ring": ["s"],
+    "stalk-surface-below-ring": ["s"],
+    "stalk-color-above-ring": ["w"],
+    "stalk-color-below-ring": ["w"],
+    "veil-type": ["p"],
+    "veil-color": ["w"],
+    "ring-number": ["o"],
+    "ring-type": ["p"],
+    "spore-print-color": ["k"],
+    "population": ["s"],
+    "habitat": ["u"]
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +44,21 @@ class _MushroomPageState extends State<MushroomPage> {
         child: BlocBuilder<MushroomBloc, MushroomState>(
           builder: (context, state) {
             if (state is LoadedState) {
-              return const Text('Loading was successful');
+              return Text('Loading was successful, mushroom was: ${state.model.poisonous}');
             } else if (state is ErrorState) {
-              return const Text('Something went wrong');
+              return Text('Failure: ${state.failure}');
             }
-            return const Text('Initial state');
+            return Column(
+              children: [
+                const Text('Button pogu'),
+                ElevatedButton(
+                  onPressed: () async {
+                    BlocProvider.of<MushroomBloc>(context).add(RequestMushroomInfo(json: customJson));
+                  },
+                  child: const Text('test'),
+                ),
+              ],
+            );
           },
         ),
       ),

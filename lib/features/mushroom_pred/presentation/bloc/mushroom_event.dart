@@ -6,7 +6,7 @@ abstract class MushroomEvent extends Equatable {
 }
 
 class RequestMushroomInfo extends MushroomEvent {
-  final Map<String, String> json;
+  final Map<String, dynamic> json;
 
   RequestMushroomInfo({required this.json});
 }
