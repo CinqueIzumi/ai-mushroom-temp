@@ -1,13 +1,9 @@
-import 'dart:convert';
-
 import 'package:ai_mushroom/features/mushroom_pred/data/models/mushroom_info_model.dart';
 import 'package:ai_mushroom/features/mushroom_pred/domain/entities/mushroom_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../../fixtures/fixture_reader.dart';
-
 void main() {
-  const tMushroomInfoModel = MushroomInfoModel(poison: false);
+  const tMushroomInfoModel = MushroomInfoModel(poison: true);
 
   test('should be a subclass of MushroomInfo Entity', () {
     // assert
@@ -17,10 +13,10 @@ void main() {
   group('fromJson', () {
     test('should return a valid model using json', () {
       // arrange
-      final Map<String, dynamic> jsonMap = json.decode(fixture('edible_info_return.json'));
+      const String response = 'This mushroom has been classified as poisonous';
 
       // act
-      final result = MushroomInfoModel.fromResponse(jsonMap);
+      final result = MushroomInfoModel.fromResponse(response);
 
       // assert
       expect(result, tMushroomInfoModel);
@@ -34,7 +30,7 @@ void main() {
 
       // assert
       final expectedMap = {
-        "poisonous": false
+        "poisonous": true
       };
 
       expect(result, expectedMap);
