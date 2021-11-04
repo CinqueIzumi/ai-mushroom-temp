@@ -1,6 +1,6 @@
 import 'package:ai_mushroom/core/utils/colors.dart';
+import 'package:ai_mushroom/core/widgets/drawer_menu.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
-import 'package:ai_mushroom/features/mushroom_pred/presentation/pages/mushroom_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'injection_container.dart' as di;
@@ -22,14 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mushroom Prediction',
+      title: 'Mushroom Predictor',
       theme: ThemeData(
         scaffoldBackgroundColor: kColorScaffold,
       ),
-      home: const Scaffold(
-        body: SafeArea(
-          child: MushroomPage(),
-        ),
+      home: const DrawerScaleIcon(
+        initialState: 0,
       ),
     );
   }
