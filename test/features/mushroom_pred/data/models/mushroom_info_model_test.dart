@@ -17,7 +17,7 @@ void main() {
   group('fromJson', () {
     test('should return a valid model using json', () {
       // arrange
-      final Map<String, dynamic> jsonMap = json.decode(fixture('edible_info.json'));
+      final Map<String, dynamic> jsonMap = json.decode(fixture('edible_info_return.json'));
 
       // act
       final result = MushroomInfoModel.fromJson(jsonMap);
