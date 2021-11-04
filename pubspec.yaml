@@ -22,6 +22,9 @@ dependencies:
 
   http: ^0.13.4
 
+  # Used for state management
+  flutter_bloc: ^7.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
