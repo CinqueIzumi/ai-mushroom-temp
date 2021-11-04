@@ -1,5 +1,6 @@
 import 'package:ai_mushroom/features/mushroom_pred/data/datasources/remote_data_source.dart';
 import 'package:ai_mushroom/features/mushroom_pred/data/repositories/mushroom_repository_impl.dart';
+import 'package:ai_mushroom/features/mushroom_pred/domain/repositories/mushroom_repository.dart';
 import 'package:ai_mushroom/features/mushroom_pred/domain/usecases/get_prediction.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -15,7 +16,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetPrediction(sl()));
 
   // Repository
-  sl.registerLazySingleton(() => MushroomRepositoryImpl(dataSource: sl()));
+  sl.registerLazySingleton<MushroomRepository>(() => MushroomRepositoryImpl(dataSource: sl()));
 
   // Data sources
   sl.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl(client: sl()));
