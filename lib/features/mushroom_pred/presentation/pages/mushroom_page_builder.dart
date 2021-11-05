@@ -1,6 +1,7 @@
 import 'package:ai_mushroom/core/utils/colors.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/bloc/mushroom_bloc.dart';
 import 'package:ai_mushroom/features/mushroom_pred/presentation/widgets/select_card.dart';
+import 'package:ai_mushroom/features/mushroom_pred/presentation/widgets/simple_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -284,6 +285,24 @@ class _MushroomPageBuilderState extends State<MushroomPageBuilder> {
 
   List<Widget> _buildColumnWidgets() {
     return [
+      const SimpleCard(widgets: [
+        Text('Please fill in the questionnaire below to determine whether the mushroom is edible or poisonous.\n\n'
+            'Underneath this card will be another card, which displays the basic anatomy of a mushroom, which can be referenced '
+            'while answering the questions of the questionnaire.')
+      ]),
+      SimpleCard(widgets: [
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+          child: Image.asset(
+            'assets/anatomy.png',
+            fit: BoxFit.fitWidth,
+            width: double.infinity,
+          ),
+        ),
+      ]),
       card1,
       card2,
       card3,
